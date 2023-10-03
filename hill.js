@@ -1,6 +1,6 @@
 export class Hill {
     constructor(color, speed, total) {
-        this.colode = color;
+        this.color = color;
         this.speed = speed;
         this.total = total;
     }
