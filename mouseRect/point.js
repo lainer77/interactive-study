@@ -24,8 +24,8 @@ export class Point {
 
     collide(point, width, height) {
         return (
-            this.x >= width &&
-            this.y >= height &&
+            this.x >= point.x &&
+            this.y >= point.y &&
             this.x <= point.x + width &&
             this.y <= point.y + height
         );
