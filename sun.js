@@ -22,8 +22,8 @@ export class Sun {
         this.stageWidth = stageWidth;
         this.stageHeight = stageHeight;
 
-        this.x = this.stageWidth - 300;
-        this.y = 300;
+        this.x = this.stageWidth - (this.stageHeight / 10) * 3;
+        this.y = (this.stageHeight / 10) * 3;
     }
 
     draw(ctx, t) {
