@@ -1,6 +1,7 @@
 {
     "scripts": {
-        "sh-start": "lite-server --baseDir='sheepHills'"
+        "sh-start": "lite-server --baseDir='sheepHills'",
+        "mr-start": "lite-server --baseDir='mouseRect'"
     },
     "devDependencies": {
         "lite-server": "^2.6.1"
