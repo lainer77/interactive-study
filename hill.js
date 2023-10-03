@@ -28,6 +28,17 @@ export class Hill {
         let prev = cur;
 
         let dots = [];
+        cur.x += this.speed; // 언덕 시작점 이동
+
+        // 언덕을 연결하는 로직
+        if (cur.x > -this.gap) {
+            this.points.unshift({
+                x: -(this.gap * 2),
+                y: this.getY(),
+            });
+        } else if (cur.x > this.stageWidth + this.gap) {
+            this.points.splice(-1);
+        }
 
         ctx.moveTo(cur.x, cur.y);
 
@@ -36,7 +47,7 @@ export class Hill {
 
         for (let i = 1; i < this.points.length; i++) {
             cur = this.points[i];
-
+            cur.x += this.speed; // 언덕 각 점들 이동
             const cx = (prev.x + cur.x) / 2;
             const cy = (prev.y + cur.y) / 2;
             ctx.quadraticCurveTo(prev.x, prev.y, cx, cy);
