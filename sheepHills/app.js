@@ -1,6 +1,6 @@
 import { Hill } from "./hill.js";
-import { SheepController } from "./sheepController.js";
-import { Sun } from "./sun.js";
+import { SheepController } from "../sheepController.js";
+import { Sun } from "../sun.js";
 
 class App {
     constructor() {

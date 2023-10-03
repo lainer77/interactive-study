@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "start": "lite-server"
+        "sh-start": "lite-server --baseDir='sheepHills'"
     },
     "devDependencies": {
         "lite-server": "^2.6.1"
