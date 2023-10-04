@@ -1,11 +1,10 @@
 import { Point } from "./point.js";
 import { Dialog } from "./dialog.js";
+import { Interactive } from "../interactive.js";
 
-class App {
+class App extends Interactive {
     constructor() {
-        this.canvas = document.createElement("canvas");
-        this.ctx = this.canvas.getContext("2d");
-        document.body.appendChild(this.canvas);
+        super();
 
         this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
 
@@ -18,17 +17,14 @@ class App {
             this.items[i] = new Dialog(i);
         }
 
-        window.addEventListener("resize", this.resize.bind(this), false);
-        this.resize();
-
-        requestAnimationFrame(this.animate.bind(this));
-
         document.addEventListener("pointerdown", this.onDown.bind(this), false);
         document.addEventListener("pointermove", this.onMove.bind(this), false);
         document.addEventListener("pointerup", this.onUp.bind(this), false);
     }
 
     resize() {
+        super.resize();
+
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
 
@@ -49,9 +45,7 @@ class App {
     }
 
     animate() {
-        requestAnimationFrame(this.animate.bind(this));
-
-        this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
+        super.animate();
 
         for (let i = 0; i < this.items.length; i++) {
             this.items[i].animate(this.ctx);

@@ -1,14 +1,11 @@
 import { Hill } from "./hill.js";
 import { SheepController } from "../sheepController.js";
 import { Sun } from "../sun.js";
+import { Interactive } from "./interactive.js";
 
-class App {
+class App extends Interactive {
     constructor() {
-        this.canvas = document.createElement("canvas");
-        this.ctx = this.canvas.getContext("2d");
-        document.body.appendChild(this.canvas);
-
-        this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
+        super();
 
         this.hills = [
             new Hill("#fd6bea", 0.2, 12),
@@ -18,20 +15,10 @@ class App {
 
         this.sheepController = new SheepController();
         this.suns = [new Sun(200, 10, "#ffb200")];
-
-        window.addEventListener("resize", this.resize.bind(this), false);
-        this.resize();
-
-        requestAnimationFrame(this.animate.bind(this));
     }
 
     resize() {
-        this.stageWidth = document.body.clientWidth;
-        this.stageHeight = document.body.clientHeight;
-
-        this.canvas.width = this.stageWidth * this.pixelRatio;
-        this.canvas.height = this.stageHeight * this.pixelRatio;
-        this.ctx.scale(this.pixelRatio, this.pixelRatio);
+        super.resize();
 
         for (let i = 0; i < this.suns.length; i++) {
             this.suns[i].resize(this.stageWidth, this.stageHeight);
@@ -45,9 +32,7 @@ class App {
     }
 
     animate(t) {
-        requestAnimationFrame(this.animate.bind(this));
-
-        this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
+        super.animate(t);
 
         for (let i = 0; i < this.suns.length; i++) {
             this.suns[i].draw(this.ctx, t);
